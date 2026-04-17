@@ -1,0 +1,11 @@
+Write a Python program that takes a student’s marks as input and prints the grade based on the following criteria:
+90 and above → A
+80 to 89 → B
+70 to 79 → C
+60 to 69 → D
+Below 60 → Fail
+Write a program that asks the user to enter a number and prints its multiplication table from 1 to 10 using a for loop.
+ 
+Create a function that accepts a list of numbers and returns the largest number without using Python’s built-in max() function.
+ 
+Write a Python program that reads a text file and counts the total number of words in it.Handle the case where the file does not exist using exception handling.
