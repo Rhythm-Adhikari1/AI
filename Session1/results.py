@@ -1,7 +1,12 @@
-# take input
+"""Grade classification script.
+
+This module accepts a student's marks as input and assigns a letter grade
+based on a fixed percentage scale.
+"""
+
+
 marks = float(input("Enter student's marks: "))
 
-# Determine grade
 if marks >= 90:
     grade = "A"
 elif marks >= 80:
@@ -13,5 +18,4 @@ elif marks >= 60:
 else:
     grade = "Fail"
 
-# final grade 
 print("Grade:", grade)
