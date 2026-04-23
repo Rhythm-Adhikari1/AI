@@ -1,0 +1,50 @@
+Task 1: Fetch & Print (Easy)
+Estimated Time: ~30 min
+
+Objective: Use the JSONPlaceholder API to fetch a list of users. Print each user's name and email to the terminal.
+
+Steps:
+
+requests.get('https://jsonplaceholder.typicode.com/users')
+
+Check status_code == 200
+
+Loop through the JSON and print name + email + address['city']
+
+Deliverable: Working script + terminal screenshot
+
+Task 2: Fetch & Save to CSV (Medium)
+Estimated Time: ~1 hour
+
+Objective: Fetch posts from the API. Save them to a CSV with specific columns. Then read the CSV back and filter the results.
+
+Steps:
+
+Endpoint: /posts
+
+Save: id, title, body to posts.csv
+
+Read back with DictReader
+
+Filter: Posts having a title more than 5 words and write them into a new CSV.
+
+Deliverable: posts.csv + filter script + new CSV
+
+Task 3: Real API + Analysis (Hard)
+Estimated Time: 2–3 hours
+
+Objective: Use the Open-Meteo weather API (free, no key needed) to fetch a 7-day weather forecast for Kathmandu. Save to CSV and find the hottest/coldest days.
+
+Steps:
+
+API: https://api.open-meteo.com/v1/forecast
+
+Params: Kathmandu's latitude/longitude, daily=temperature_2m_max
+
+Save: date + max_temp to weather.csv
+
+Analyze: Find max/min temp and print which day they occurred.
+
+Bonus: Save a summary to a .txt file.
+
+Deliverable: weather.csv + analysis script
