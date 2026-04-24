@@ -1,12 +1,17 @@
 import requests
 import csv
+import os
+from dotenv import load_dotenv
 
-# Kathmandu location
-lat = 27.72
-lon = 85.32
+# Load environment variables
+load_dotenv()
+
+# Location from environment
+lat = float(os.getenv('LATITUDE'))
+lon = float(os.getenv('LONGITUDE'))
 
 # Fetch weather from API
-url = "https://api.open-meteo.com/v1/forecast"
+url = os.getenv('WEATHER_API_URL')
 params = {
     "latitude": lat,
     "longitude": lon,
@@ -23,14 +28,15 @@ if response.status_code == 200:
     temps = data['daily']['temperature_2m_max']
     
     # Save to CSV
-    with open('weather.csv', 'w', newline='') as f:
+    output_file = os.getenv('OUTPUT_WEATHER_CSV')
+    with open(output_file, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['date', 'max_temp'])
         
         for date, temp in zip(dates, temps):
             writer.writerow([date, temp])
     
-    print("Weather data saved to weather.csv")
+    print(f"Weather data saved to {output_file}")
     
     for date, temp in zip(dates, temps):
         print(date + ": " + str(temp) + " C")

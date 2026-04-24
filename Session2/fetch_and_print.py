@@ -1,7 +1,13 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Fetch the list of users from JSONPlaceholder API
-response = requests.get('https://jsonplaceholder.typicode.com/users')
+api_url = os.getenv('JSONPLACEHOLDER_API_URL')
+response = requests.get(f'{api_url}/users')
 
 # Check if the request was successful
 if response.status_code == 200:
