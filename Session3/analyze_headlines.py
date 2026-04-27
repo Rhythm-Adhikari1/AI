@@ -6,7 +6,7 @@ Reads headlines from CSV and answers all 8 analytical questions.
 import os
 import csv
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List, Dict, Tuple
 from pathlib import Path
 
@@ -123,56 +123,56 @@ class HeadlinesAnalyzer:
     
     def question_5_publication_time_split(self) -> str:
         """Q5: What percentage of all headlines were published in the last 6 hours vs older than 6 hours?"""
-        now = datetime.now(datetime.now().astimezone().tzinfo) if datetime.now().astimezone().tzinfo else datetime.now()
-        six_hours_ago = now - timedelta(hours=6)
-        
+
+        now = datetime.now(timezone.utc)
+        cutoff = now - timedelta(hours=6)
+
         recent_count = 0
         older_count = 0
         unparseable = 0
-        
+
         for headline in self.headlines:
-            published_at = headline.get('published_at', 'N/A')
-            if published_at and published_at != 'N/A':
-                try:
-                    # Try ISO 8601 format (with or without timezone)
-                    if 'T' in published_at:
-                        if '+' in published_at:
-                            pub_time = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-                        else:
-                            pub_time = datetime.fromisoformat(published_at.replace('Z', ''))
-                    else:
-                        pub_time = datetime.fromisoformat(published_at)
-                    
-                    # Make timezone-naive for comparison
-                    if pub_time.tzinfo:
-                        pub_time = pub_time.replace(tzinfo=None)
-                    if six_hours_ago.tzinfo:
-                        six_hours_ago_naive = six_hours_ago.replace(tzinfo=None)
-                    else:
-                        six_hours_ago_naive = six_hours_ago
-                    
-                    if pub_time >= six_hours_ago_naive:
-                        recent_count += 1
-                    else:
-                        older_count += 1
-                except Exception as e:
-                    unparseable += 1
-            else:
+            published_at = headline.get("published_at")
+
+            if not published_at:
                 unparseable += 1
-        
+                continue
+
+            try:
+                # Normalize ISO format (handles Z properly)
+                pub_time = datetime.fromisoformat(
+                    published_at.replace("Z", "+00:00")
+                )
+
+                # Ensure UTC comparison
+                if pub_time.tzinfo is None:
+                    pub_time = pub_time.replace(tzinfo=timezone.utc)
+                else:
+                    pub_time = pub_time.astimezone(timezone.utc)
+
+                if pub_time >= cutoff:
+                    recent_count += 1
+                else:
+                    older_count += 1
+
+            except Exception:
+                unparseable += 1
+
         total = recent_count + older_count
-        
+
         if total == 0:
             return "No valid publication times to analyze"
-        
-        recent_pct = (recent_count / total) * 100 if total > 0 else 0
-        older_pct = (older_count / total) * 100 if total > 0 else 0
-        
-        result = f"Publication time distribution:\n"
-        result += f"  Last 6 hours: {recent_count} headlines ({recent_pct:.1f}%)\n"
-        result += f"  Older than 6 hours: {older_count} headlines ({older_pct:.1f}%)\n"
-        result += f"  Unparseable timestamps: {unparseable}\n"
-        
+
+        recent_pct = (recent_count / total) * 100
+        older_pct = (older_count / total) * 100
+
+        result = (
+            "Publication time distribution:\n"
+            f"  Last 6 hours: {recent_count} ({recent_pct:.1f}%)\n"
+            f"  Older than 6 hours: {older_count} ({older_pct:.1f}%)\n"
+            f"  Unparseable timestamps: {unparseable}\n"
+        )
+
         return result
     
     def question_6_duplicate_prevention(self) -> str:
