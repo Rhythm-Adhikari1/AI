@@ -287,37 +287,60 @@ class HeadlinesAnalyzer:
         
         return result
     
-    def run_all_analyses(self):
-        """Run all 8 analyses and print results."""
+    def run_all_analyses(self, output_file: str = 'analysis_results.txt') -> bool:
+        """
+        Run all 8 analyses and save results to a text file.
+        
+        Args:
+            output_file: Name of the output text file (default: analysis_results.txt)
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
         if not self.headlines:
             print("[ERROR] No data to analyze. Run gnews_pipeline.py first.")
-            return
+            return False
         
-        print("=" * 70)
-        print("GNews Headlines Analysis - All 8 Questions")
-        print("=" * 70)
-        print()
-        
-        questions = [
-            ("Q1: Most headlines by country?", self.question_1_most_headlines),
-            ("Q2: Average words per headline by country?", self.question_2_avg_words_per_country),
-            ("Q3: Headlines in multiple countries?", self.question_3_duplicate_headlines),
-            ("Q4: Most prolific news source?", self.question_4_most_prolific_source),
-            ("Q5: Publication time distribution (last 6 hours)?", self.question_5_publication_time_split),
-            ("Q6: Duplicate prevention strategy?", self.question_6_duplicate_prevention),
-            ("Q7: Long headlines (>6 words) filter?", self.question_7_long_headlines_filter),
-            ("Q8: Longest vs shortest headline by country?", self.question_8_longest_shortest_headlines),
-        ]
-        
-        for question_title, question_func in questions:
-            print(f"\n{question_title}")
-            print("-" * 70)
-            result = question_func()
-            print(result)
-        
-        print("=" * 70)
-        print("Analysis Complete")
-        print("=" * 70)
+        try:
+            with open(output_file, 'w', encoding='utf-8') as f:
+                # Write header
+                f.write("=" * 70 + "\n")
+                f.write("GNews Headlines Analysis - All 8 Questions\n")
+                f.write("=" * 70 + "\n")
+                f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("\n")
+                
+                questions = [
+                    ("Q1: Most headlines by country?", self.question_1_most_headlines),
+                    ("Q2: Average words per headline by country?", self.question_2_avg_words_per_country),
+                    ("Q3: Headlines in multiple countries?", self.question_3_duplicate_headlines),
+                    ("Q4: Most prolific news source?", self.question_4_most_prolific_source),
+                    ("Q5: Publication time distribution (last 6 hours)?", self.question_5_publication_time_split),
+                    ("Q6: Duplicate prevention strategy?", self.question_6_duplicate_prevention),
+                    ("Q7: Long headlines (>6 words) filter?", self.question_7_long_headlines_filter),
+                    ("Q8: Longest vs shortest headline by country?", self.question_8_longest_shortest_headlines),
+                ]
+                
+                # Write each question and its result
+                for question_title, question_func in questions:
+                    f.write(f"\n{question_title}\n")
+                    f.write("-" * 70 + "\n")
+                    result = question_func()
+                    f.write(result)
+                    f.write("\n")
+                
+                # Write footer
+                f.write("=" * 70 + "\n")
+                f.write("Analysis Complete\n")
+                f.write("=" * 70 + "\n")
+            
+            # Console output summary
+            print("[OK] Analysis saved to analysis_results.txt")
+            return True
+            
+        except Exception as e:
+            print(f"[ERROR] Failed to save analysis: {e}")
+            return False
 
 
 def main():

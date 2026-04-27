@@ -1,0 +1,123 @@
+======================================================================
+GNews Headlines Analysis - All 8 Questions
+======================================================================
+Generated: 2026-04-27 21:08:37
+
+
+Q1: Most headlines by country?
+----------------------------------------------------------------------
+Nepal published the most headlines with 20 headlines
+
+Breakdown by country:
+  Australia: 11
+  India: 7
+  Nepal: 20
+  USA: 10
+
+
+Q2: Average words per headline by country?
+----------------------------------------------------------------------
+Average number of words per headline title by country:
+  Australia: 10.73 words (total: 118, count: 11)
+  India: 12.57 words (total: 88, count: 7)
+  Nepal: 10.90 words (total: 218, count: 20)
+  USA: 12.30 words (total: 123, count: 10)
+
+
+Q3: Headlines in multiple countries?
+----------------------------------------------------------------------
+No headlines appeared in more than one country.
+
+
+Q4: Most prolific news source?
+----------------------------------------------------------------------
+Most prolific news source: The Guardian with 4 headlines
+
+Top 10 sources:
+  1. The Guardian: 4 headlines
+  2. Australian Broadcasting Corporation: 3 headlines
+  3. 1News: 2 headlines
+  4. NewVision.co.ug: 2 headlines
+  5. standardmedia.co.ke: 2 headlines
+  6. CBS Sports: 2 headlines
+  7. The Age: 2 headlines
+  8. Hindustan Times: 2 headlines
+  9. Daily Monitor: 1 headlines
+  10. The Times of Israel: 1 headlines
+
+
+Q5: Publication time distribution (last 6 hours)?
+----------------------------------------------------------------------
+Publication time distribution:
+  Last 6 hours: 0 (0.0%)
+  Older than 6 hours: 48 (100.0%)
+  Unparseable timestamps: 0
+
+
+Q6: Duplicate prevention strategy?
+----------------------------------------------------------------------
+Duplicate Prevention Strategy:
+
+            1. Headline Hash Generation:
+            - Each headline is hashed using MD5(title + source)
+            - This creates a unique identifier for each unique headline+source combination
+            - Identical headlines from the same source are detected
+
+            2. Before Adding New Headlines:
+            - The script reads all existing headline_hash values from CSV
+            - Stores them in a set for O(1) lookup performance
+            - Any new article with a hash already in the set is skipped
+
+            3. Implementation Details:
+            - Function: generate_headline_hash() creates MD5 hash of "title|source"
+            - Function: get_existing_headlines_hashes() loads all hashes from CSV
+            - Before inserting, headline_hash is checked against existing hashes
+            - The 'headline_hash' column in CSV enables deduplication across runs
+
+            4. Result:
+            - Running the script multiple times WILL NOT create duplicate rows
+            - Only genuinely new headlines are added each time
+            - The CSV grows with new content, not duplicates
+
+            Example:
+            Run 1: Fetches 30 headlines → CSV has 30 rows
+            Run 2: Fetches 30 headlines (10 new, 20 same) → CSV has 40 rows (only 10 new added)
+            
+
+Q7: Long headlines (>6 words) filter?
+----------------------------------------------------------------------
+45 headlines with title > 6 words saved to headlines_long_titles.csv
+
+Word count distribution:
+  3 words: 1 headlines 
+  5 words: 2 headlines 
+  7 words: 1 headlines [FILTERED]
+  8 words: 4 headlines [FILTERED]
+  9 words: 3 headlines [FILTERED]
+  10 words: 4 headlines [FILTERED]
+  11 words: 10 headlines [FILTERED]
+  12 words: 6 headlines [FILTERED]
+  13 words: 5 headlines [FILTERED]
+  14 words: 6 headlines [FILTERED]
+  15 words: 3 headlines [FILTERED]
+  16 words: 1 headlines [FILTERED]
+  17 words: 1 headlines [FILTERED]
+  19 words: 1 headlines [FILTERED]
+
+
+Q8: Longest vs shortest headline by country?
+----------------------------------------------------------------------
+Headline length by country (average words):
+
+Longest average: India with 12.57 words
+Shortest average: Australia with 10.73 words
+
+All countries ranked:
+  India: 12.57 words
+  USA: 12.30 words
+  Nepal: 10.90 words
+  Australia: 10.73 words
+
+======================================================================
+Analysis Complete
+======================================================================
