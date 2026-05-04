@@ -249,7 +249,7 @@ def generate_summary_report(conn, q1_result, q2_result, q3_results, db_name="wea
         
         # Save to file
         report_text = "\n".join(summary)
-        with open("summary.txt", "w") as f:
+        with open("summary.txt", "w", encoding="utf-8") as f:
             f.write(report_text)
         
         print("[OK] Summary report generated: summary.txt")

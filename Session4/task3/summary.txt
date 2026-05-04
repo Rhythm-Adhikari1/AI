@@ -1,32 +1,32 @@
 WEATHER DATA ANALYSIS REPORT
 
-Report Generated: 2026-05-04 14:00:36
+Report Generated: 2026-05-04 14:10:57
 Database: weather_db
-Total Records: 21 (3 cities × 7 days)
+Total Records: 21 (3 cities Ã— 7 days)
 
 QUERY 1: City with Highest Average Maximum Temperature
 City: Tokyo
-Average Max Temperature: 22.99°C
+Average Max Temperature: 22.99Â°C
 
 QUERY 2: Hottest Day Across All Cities
 City: New York
 Date: 2026-05-05
-Maximum Temperature: 27.10°C
+Maximum Temperature: 27.10Â°C
 
-QUERY 3: Days with Temperature Difference > 10°C
-Found 6 day(s) with temperature difference > 10°C:
+QUERY 3: Days with Temperature Difference > 10Â°C
+Found 6 day(s) with temperature difference > 10Â°C:
 
-  • New York on 2026-05-05: Max 27.10°C, Min 11.80°C (Diff: 15.30°C)
-  • New York on 2026-05-04: Max 22.40°C, Min 7.50°C (Diff: 14.90°C)
-  • Tokyo on 2026-05-04: Max 26.80°C, Min 15.40°C (Diff: 11.40°C)
-  • New York on 2026-05-10: Max 20.30°C, Min 9.20°C (Diff: 11.10°C)
-  • Tokyo on 2026-05-09: Max 23.30°C, Min 12.90°C (Diff: 10.40°C)
-  • Tokyo on 2026-05-10: Max 23.00°C, Min 12.80°C (Diff: 10.20°C)
+  â€¢ New York on 2026-05-05: Max 27.10Â°C, Min 11.80Â°C (Diff: 15.30Â°C)
+  â€¢ New York on 2026-05-04: Max 22.40Â°C, Min 7.50Â°C (Diff: 14.90Â°C)
+  â€¢ Tokyo on 2026-05-04: Max 26.80Â°C, Min 15.40Â°C (Diff: 11.40Â°C)
+  â€¢ New York on 2026-05-10: Max 20.30Â°C, Min 9.20Â°C (Diff: 11.10Â°C)
+  â€¢ Tokyo on 2026-05-09: Max 23.30Â°C, Min 12.90Â°C (Diff: 10.40Â°C)
+  â€¢ Tokyo on 2026-05-10: Max 23.00Â°C, Min 12.80Â°C (Diff: 10.20Â°C)
 
 TEMPERATURE STATISTICS
-London       | Lowest:   5.40°C | Highest:  17.50°C | Average:  12.24°C
-New York     | Lowest:   7.30°C | Highest:  27.10°C | Average:  14.62°C
-Tokyo        | Lowest:  11.20°C | Highest:  26.80°C | Average:  18.26°C
+London       | Lowest:   5.40Â°C | Highest:  17.50Â°C | Average:  12.24Â°C
+New York     | Lowest:   7.30Â°C | Highest:  27.10Â°C | Average:  14.62Â°C
+Tokyo        | Lowest:  11.20Â°C | Highest:  26.80Â°C | Average:  18.26Â°C
 
 HUMIDITY STATISTICS (Bonus Feature)
 London       | Average Humidity: 79.7%
