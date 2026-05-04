@@ -1,0 +1,39 @@
+
+Users by City
+city,user_count
+Gwenborough,1
+Wisokyburgh,1
+McKenziehaven,1
+South Elvis,1
+Roscoeview,1
+South Christy,1
+Howemouth,1
+Aliyaview,1
+Bartholomebury,1
+Lebsackbury,1
+
+Companies & Email Domains
+company_name,employee_count,email_domains
+Abernathy Group,1,rosamond.me
+Considine-Lockman,1,jasper.info
+Deckow-Crist,1,melissa.tv
+Hoeger LLC,1,karina.biz
+Johns Group,1,billy.biz
+Keebler LLC,1,annie.ca
+Robel-Corkery,1,kory.org
+Romaguera-Crona,1,april.biz
+Romaguera-Jacobson,1,yesenia.net
+Yost and Sons,1,dana.io
+
+Geographic Distribution
+city,user_count,avg_latitude,avg_longitude
+Gwenborough,1,37.3159,81.1496
+Wisokyburgh,1,43.9509,34.4618
+McKenziehaven,1,68.6102,47.0653
+South Elvis,1,29.4572,164.2990
+Roscoeview,1,31.8129,62.5342
+South Christy,1,71.4197,71.7478
+Howemouth,1,24.8918,21.8984
+Aliyaview,1,14.3990,120.7677
+Bartholomebury,1,24.6463,168.8889
+Lebsackbury,1,38.2386,57.2232
