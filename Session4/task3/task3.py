@@ -293,11 +293,12 @@ if __name__ == "__main__":
     print("Step 5-7: Running analysis queries...\n")
     q1_result = query_highest_avg_temp(conn)
     if q1_result:
-        print(f"Query 1 Result: City '{q1_result[0]}' has highest avg max temp of {q1_result[1]}°C")
-    
+        city, avg_temp = q1_result
+        print(f"Query 1 Result: City '{city}' has highest avg max temp of {avg_temp}°C")
     q2_result = query_hottest_day(conn)
     if q2_result:
-        print(f"Query 2 Result: Hottest day is {q2_result[1]} in {q2_result[0]} with {q2_result[2]}°C")
+        city, date, temp = q2_result
+        print(f"Query 2 Result: Hottest day is {date} in {city} with {temp}°C")
     
     q3_results = query_large_temp_diff(conn)
     print(f"Query 3 Result: Found {len(q3_results)} day(s) with temp difference > 10°C")
