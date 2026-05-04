@@ -1,0 +1,140 @@
+API MONITOR - CHANGE DETECTION REPORT
+================================================================================
+
+POST COUNT PER USER
+--------------------------------------------------------------------------------
+User ID         Post Count     
+------------------------------
+1               10             
+2               10             
+3               10             
+4               10             
+5               10             
+6               10             
+7               10             
+8               10             
+9               10             
+10              10             
+
+
+CHANGE LOG ENTRIES FROM LATEST RUN
+--------------------------------------------------------------------------------
+Post ID      User ID      Type            Description                              Time                
+---------------------------------------------------------------------------------------------------
+1            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+2            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+3            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+4            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+5            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+6            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+7            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+8            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+9            1            NEW             Initial post creation                    2026-05-04 14:19:40 
+10           1            NEW             Initial post creation                    2026-05-04 14:19:40 
+11           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+12           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+13           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+14           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+15           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+16           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+17           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+18           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+19           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+20           2            NEW             Initial post creation                    2026-05-04 14:19:40 
+21           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+22           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+23           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+24           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+25           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+26           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+27           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+28           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+29           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+30           3            NEW             Initial post creation                    2026-05-04 14:19:40 
+31           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+32           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+33           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+34           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+35           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+36           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+37           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+38           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+39           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+40           4            NEW             Initial post creation                    2026-05-04 14:19:40 
+41           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+42           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+43           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+44           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+45           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+46           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+47           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+48           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+49           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+50           5            NEW             Initial post creation                    2026-05-04 14:19:40 
+51           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+52           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+53           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+54           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+55           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+56           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+57           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+58           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+59           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+60           6            NEW             Initial post creation                    2026-05-04 14:19:40 
+61           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+62           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+63           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+64           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+65           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+66           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+67           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+68           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+69           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+70           7            NEW             Initial post creation                    2026-05-04 14:19:40 
+71           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+72           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+73           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+74           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+75           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+76           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+77           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+78           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+79           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+80           8            NEW             Initial post creation                    2026-05-04 14:19:40 
+81           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+82           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+83           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+84           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+85           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+86           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+87           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+88           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+89           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+90           9            NEW             Initial post creation                    2026-05-04 14:19:40 
+91           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+92           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+93           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+94           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+95           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+96           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+97           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+98           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+99           10           NEW             Initial post creation                    2026-05-04 14:19:40 
+100          10           NEW             Initial post creation                    2026-05-04 14:19:40 
+
+
+USERS WITH MOST CHANGE EVENTS
+--------------------------------------------------------------------------------
+User ID         Change Count    Change Types                                      
+--------------------------------------------------------------------------------
+1               10              NEW                                               
+2               10              NEW                                               
+3               10              NEW                                               
+4               10              NEW                                               
+5               10              NEW                                               
+6               10              NEW                                               
+7               10              NEW                                               
+8               10              NEW                                               
+9               10              NEW                                               
+10              10              NEW                                               
+
