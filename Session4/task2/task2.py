@@ -174,7 +174,6 @@ def print_query_results(title, query, conn, readme_file=None):
         
         # Print to console
         print(f"\n{title}")
-        print("-" * 80)
         
         # Write to README
         if readme_file:
@@ -256,9 +255,7 @@ def run_queries(conn, readme_file=None):
 
 def main():
     """Main function"""
-    print("\n" + "=" * 80)
     print("API TO MYSQL PIPELINE - TASK 02")
-    print("=" * 80)
     
     # Create output file
     readme_filename = os.path.join(os.path.dirname(__file__), "README.md")
@@ -298,19 +295,15 @@ def main():
         insert_posts(conn, posts)
     
     # Run queries
-    print("\n" + "=" * 80)
-    print("QUERY RESULTS")
-    print("=" * 80)
+    print("\nQUERY RESULTS")
     readme_file.write("## Query Results\n\n")
     
     run_queries(conn, readme_file)
     
     # Close connection
     conn.close()
-    print("\n" + "=" * 80)
     print("Pipeline completed successfully!")
-    print(f"Results saved to: {readme_filename}")
-    print("=" * 80 + "\n")
+    print(f"Results saved to: {readme_filename}\n")
     
     readme_file.write("\n---\n")
     readme_file.write("*Pipeline completed successfully!*\n")

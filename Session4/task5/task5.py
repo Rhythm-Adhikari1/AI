@@ -39,10 +39,10 @@ def create_output_directory():
     try:
         if not os.path.exists(OUTPUT_DIR):
             os.makedirs(OUTPUT_DIR)
-            print(f"✓ Created output directory: {OUTPUT_DIR}")
+            print(f"[OK] Created output directory: {OUTPUT_DIR}")
         return True
     except Exception as e:
-        print(f"✗ Error creating output directory: {e}")
+        print(f"[ERROR] Error creating output directory: {e}")
         return False
 
 # ==================== API FUNCTIONS ====================
@@ -60,28 +60,28 @@ def fetch_data(api_url, timeout=10):
         list: JSON data from API, or empty list on error
     """
     try:
-        print(f"📡 Fetching data from: {api_url}")
+        print(f"[INFO] Fetching data from: {api_url}")
         response = requests.get(api_url, timeout=timeout)
         response.raise_for_status()  # Raise exception for bad status codes
         
         data = response.json()
-        print(f"✓ Successfully fetched {len(data)} records from API")
+        print(f"[OK] Successfully fetched {len(data)} records from API")
         return data
     
     except requests.exceptions.Timeout:
-        print(f"✗ API request timed out after {timeout} seconds")
+        print(f"[ERROR] API request timed out after {timeout} seconds")
         return []
     except requests.exceptions.ConnectionError:
-        print("✗ Connection error - unable to reach API")
+        print("[ERROR] Connection error - unable to reach API")
         return []
     except requests.exceptions.HTTPError as e:
-        print(f"✗ HTTP Error: {e.response.status_code} - {e.response.reason}")
+        print(f"[ERROR] HTTP Error: {e.response.status_code} - {e.response.reason}")
         return []
     except requests.exceptions.JSONDecodeError:
-        print("✗ Invalid JSON response from API")
+        print("[ERROR] Invalid JSON response from API")
         return []
     except Exception as e:
-        print(f"✗ Unexpected error fetching data: {e}")
+        print(f"[ERROR] Unexpected error fetching data: {e}")
         return []
 
 # ==================== DATABASE FUNCTIONS ====================
@@ -92,7 +92,7 @@ def create_connection():
         conn = mysql.connector.connect(**DB_CONFIG)
         return conn
     except Error as e:
-        print(f"✗ Error connecting to MySQL: {e}")
+        print(f"[ERROR] Error connecting to MySQL: {e}")
         return None
 
 def create_database_and_table(conn):
@@ -104,7 +104,7 @@ def create_database_and_table(conn):
     try:
         # Create database
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
-        print(f"✓ Database '{DB_NAME}' created/verified")
+        print(f"[OK] Database '{DB_NAME}' created/verified")
         
         # Use database
         cursor.execute(f"USE {DB_NAME}")
@@ -129,11 +129,11 @@ def create_database_and_table(conn):
         """
         cursor.execute(create_table_query)
         conn.commit()
-        print(f"✓ Table '{TABLE_NAME}' created successfully")
+        print(f"[OK] Table '{TABLE_NAME}' created successfully")
         return True
     
     except Error as e:
-        print(f"✗ Error creating database/table: {e}")
+        print(f"[ERROR] Error creating database/table: {e}")
         return False
 
 def store_data(conn, data):
@@ -180,19 +180,19 @@ def store_data(conn, data):
                 inserted_count += 1
             
             except Error as e:
-                print(f"  ⚠ Error inserting record ID {record.get('id')}: {e}")
+                print(f"  [WARN] Error inserting record ID {record.get('id')}: {e}")
                 error_count += 1
                 continue
         
         conn.commit()
-        print(f"✓ Stored {inserted_count} records in database")
+        print(f"[OK] Stored {inserted_count} records in database")
         if error_count > 0:
-            print(f"  ⚠ {error_count} records failed to insert")
+            print(f"  [WARN] {error_count} records failed to insert")
         
         return inserted_count > 0
     
     except Error as e:
-        print(f"✗ Error storing data: {e}")
+        print(f"[ERROR] Error storing data: {e}")
         return False
 
 # ==================== ANALYSIS QUERIES ====================
@@ -215,7 +215,7 @@ def query_users_by_city(conn):
         return ("Users by City", ["city", "user_count"], results)
     
     except Error as e:
-        print(f"✗ Error in Query 1: {e}")
+        print(f"[ERROR] Error in Query 1: {e}")
         return ("Users by City", [], [])
 
 def query_companies_with_email_domains(conn):
@@ -240,7 +240,7 @@ def query_companies_with_email_domains(conn):
         return ("Companies & Email Domains", ["company_name", "employee_count", "email_domains"], results)
     
     except Error as e:
-        print(f"✗ Error in Query 2: {e}")
+        print(f"[ERROR] Error in Query 2: {e}")
         return ("Companies & Email Domains", [], [])
 
 def query_geographic_distribution(conn):
@@ -266,7 +266,7 @@ def query_geographic_distribution(conn):
         return ("Geographic Distribution", ["city", "user_count", "avg_latitude", "avg_longitude"], results)
     
     except Error as e:
-        print(f"✗ Error in Query 3: {e}")
+        print(f"[ERROR] Error in Query 3: {e}")
         return ("Geographic Distribution", [], [])
 
 def run_all_queries(conn):
@@ -340,11 +340,11 @@ def export_to_csv(queries_results):
                 for row in data:
                     writer.writerow(row)
         
-        print(f"✓ Exported results to CSV: {CSV_FILE}")
+        print(f"[OK] Exported results to CSV: {CSV_FILE}")
         return True
     
     except IOError as e:
-        print(f"✗ Error writing CSV file: {e}")
+        print(f"[ERROR] Error writing CSV file: {e}")
         return False
 
 def export_to_txt(conn, queries_results):
@@ -355,9 +355,7 @@ def export_to_txt(conn, queries_results):
     try:
         with open(TXT_FILE, 'w', encoding='utf-8') as txtfile:
             # Header
-            txtfile.write("="*80 + "\n")
-            txtfile.write("CAPSTONE PROJECT - DATA ANALYSIS REPORT\n")
-            txtfile.write("="*80 + "\n\n")
+            txtfile.write("CAPSTONE PROJECT - DATA ANALYSIS REPORT\n\n")
             
             # Timestamp
             txtfile.write(f"Report Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
@@ -370,16 +368,12 @@ def export_to_txt(conn, queries_results):
             cursor.execute(f"SELECT COUNT(*) FROM {TABLE_NAME}")
             total_users = cursor.fetchone()[0]
             
-            txtfile.write(f"{'='*80}\n")
             txtfile.write("SUMMARY STATISTICS\n")
-            txtfile.write(f"{'='*80}\n")
             txtfile.write(f"Total Records: {total_users}\n\n")
             
             # Query results
             for title, columns, data in queries_results:
-                txtfile.write(f"\n{'-'*80}\n")
-                txtfile.write(f"{title}\n")
-                txtfile.write(f"{'-'*80}\n")
+                txtfile.write(f"\n{title}\n")
                 
                 if not data:
                     txtfile.write("No results found.\n")
@@ -395,15 +389,13 @@ def export_to_txt(conn, queries_results):
                         txtfile.write(f"{row_str}\n")
             
             # Footer
-            txtfile.write(f"\n{'='*80}\n")
-            txtfile.write("END OF REPORT\n")
-            txtfile.write(f"{'='*80}\n")
+            txtfile.write("\nEND OF REPORT\n")
         
-        print(f"✓ Exported report to TXT: {TXT_FILE}")
+        print(f"[OK] Exported report to TXT: {TXT_FILE}")
         return True
     
     except IOError as e:
-        print(f"✗ Error writing TXT file: {e}")
+        print(f"[ERROR] Error writing TXT file: {e}")
         return False
 
 # ==================== MAIN ORCHESTRATION ====================
@@ -413,10 +405,9 @@ def run_complete_pipeline():
     Execute complete data pipeline:
     Fetch → Store → Analyze → Export
     """
-    print("\n" + "🚀 "*30)
-    print("CAPSTONE PROJECT - AUTOMATED DATA SYSTEM")
-    print("Week 1 + Week 2 + Week 3 Integration")
-    print("🚀 "*30 + "\n")
+    print("\n" + "CAPSTONE PROJECT - AUTOMATED DATA SYSTEM".center(90))
+    print("Week 1 + Week 2 + Week 3 Integration".center(90))
+    print("\n")
     
     # Step 0: Create output directory
     print("Step 0: Preparing environment...")
@@ -426,9 +417,7 @@ def run_complete_pipeline():
     print()
     
     # Step 1: Fetch data (Week 3)
-    print("="*70)
     print("STEP 1: FETCH DATA FROM API")
-    print("="*70)
     api_data = fetch_data(API_URL)
     if not api_data:
         print("Failed to fetch API data. Exiting.")
@@ -436,9 +425,7 @@ def run_complete_pipeline():
     print()
     
     # Step 2: Connect to database (Week 2)
-    print("="*70)
     print("STEP 2: DATABASE CONNECTION")
-    print("="*70)
     conn = create_connection()
     if conn is None:
         print("Failed to connect to MySQL. Exiting.")
@@ -446,9 +433,7 @@ def run_complete_pipeline():
     print()
     
     # Step 3: Create database and table (Week 2)
-    print("="*70)
     print("STEP 3: CREATE DATABASE SCHEMA")
-    print("="*70)
     if not create_database_and_table(conn):
         print("Failed to create database schema. Exiting.")
         conn.close()
@@ -456,9 +441,7 @@ def run_complete_pipeline():
     print()
     
     # Step 4: Store data (Week 2)
-    print("="*70)
     print("STEP 4: STORE DATA IN DATABASE")
-    print("="*70)
     if not store_data(conn, api_data):
         print("Failed to store data. Exiting.")
         conn.close()
@@ -466,16 +449,12 @@ def run_complete_pipeline():
     print()
     
     # Step 5: Run analysis queries (Week 3)
-    print("="*70)
     print("STEP 5: ANALYZE DATA WITH SQL QUERIES")
-    print("="*70)
     queries_results = run_all_queries(conn)
     print()
     
     # Step 6: Export results (Week 1)
-    print("="*70)
     print("STEP 6: EXPORT RESULTS")
-    print("="*70)
     export_to_csv(queries_results)
     export_to_txt(conn, queries_results)
     print()
@@ -484,13 +463,11 @@ def run_complete_pipeline():
     conn.close()
     
     # Final summary
-    print("="*70)
-    print("✓ PIPELINE COMPLETED SUCCESSFULLY")
-    print("="*70)
+    print("[OK] PIPELINE COMPLETED SUCCESSFULLY")
     print(f"\nOutput files created in: {OUTPUT_DIR}/")
     print(f"  • CSV file: {CSV_FILE}")
     print(f"  • TXT file: {TXT_FILE}")
-    print("\n🎉 Capstone Project Complete!\n")
+    print("\n[SUCCESS] Capstone Project Complete!\n")
 
 # ==================== ENTRY POINT ====================
 
@@ -498,8 +475,8 @@ if __name__ == "__main__":
     try:
         run_complete_pipeline()
     except KeyboardInterrupt:
-        print("\n\n✗ Pipeline interrupted by user")
+        print("\n\n[ERROR] Pipeline interrupted by user")
     except Exception as e:
-        print(f"\n\n✗ Unexpected error: {e}")
+        print(f"\n\n[ERROR] Unexpected error: {e}")
         import traceback
         traceback.print_exc()
