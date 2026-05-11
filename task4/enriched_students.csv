@@ -1,0 +1,15 @@
+name,score,grade,passed,score_category,rank
+Rekha,95.0,A,True,High,1
+Kiran,91.0,A,True,High,2
+Aarav,88.0,B,True,High,3
+Gopal,83.0,B,True,High,4
+Sita,76.0,B,True,Medium,5
+Sunita,76.0,B,True,Medium,5
+Bikash,76.0,B,True,Medium,5
+Bibek,72.0,C,True,Medium,6
+Unknown,67.0,C,True,Medium,7
+Kabita,64.0,C,True,Medium,8
+Mina,59.0,D,True,Medium,9
+Anjali,45.0,F,False,Low,10
+Ram,39.0,F,False,Low,11
+Suman,0.0,F,False,Low,12
