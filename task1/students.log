@@ -1,0 +1,9 @@
+2026-05-12 11:44:57,791 - INFO - Saved data to messy_students.csv
+2026-05-12 11:44:57,792 - INFO - Messy dataset created successfully
+2026-05-12 11:44:58,201 - INFO - Loading data from messy_students.csv
+2026-05-12 11:44:58,204 - INFO - Dataset loaded successfully
+2026-05-12 11:44:59,359 - INFO - Whitespace cleaned successfully
+2026-05-12 11:44:59,360 - INFO - Name casing standardized!
+2026-05-12 11:44:59,800 - WARNING - 2 values could not be converted and became NaN
+2026-05-12 11:44:59,800 - INFO - Score column converted to numeric successfully
+2026-05-12 11:45:01,934 - INFO - Saved data to clean_students.csv

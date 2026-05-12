@@ -1,0 +1,5 @@
+2026-05-12 11:09:53,030 - INFO - Data fetched successfully from API
+2026-05-12 11:09:53,061 - INFO - Data loaded into DataFrame successfully
+2026-05-12 11:09:53,132 - INFO - Data transformation completed successfully
+2026-05-12 11:09:55,007 - INFO - Data saved to CSV at clean_posts.csv
+2026-05-12 11:09:55,503 - INFO - Data saved to SQLite database at posts.db
