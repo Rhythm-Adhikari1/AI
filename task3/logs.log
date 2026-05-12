@@ -1,0 +1,13 @@
+2026-05-12 09:50:20,015 - INFO - Fetched data from https://jsonplaceholder.typicode.com/users
+2026-05-12 09:50:20,253 - INFO - Fetched data from https://jsonplaceholder.typicode.com/posts
+2026-05-12 10:13:33,055 - ERROR - Cleaning failed because one or more required columns are missing
+Traceback (most recent call last):
+  File "C:\Users\97797\AppData\Local\Temp\ipykernel_21568\3848830374.py", line 5, in <module>
+    raise KeyError(f"Missing column in users DataFrame: {column}")
+KeyError: 'Missing column in users DataFrame: title'
+2026-05-12 10:13:38,103 - INFO - Saved merged_data.csv successfully
+2026-05-12 10:13:38,387 - INFO - Saved to SQLite database successfully
+2026-05-12 11:06:25,992 - INFO - Fetched data from https://jsonplaceholder.typicode.com/users
+2026-05-12 11:06:26,237 - INFO - Fetched data from https://jsonplaceholder.typicode.com/posts
+2026-05-12 11:06:41,921 - INFO - Fetched data from https://jsonplaceholder.typicode.com/users
+2026-05-12 11:06:42,178 - INFO - Fetched data from https://jsonplaceholder.typicode.com/posts
